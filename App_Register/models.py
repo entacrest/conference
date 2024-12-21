@@ -1,8 +1,8 @@
 from django.db import models
-from App_Register.models import *
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.utils import timezone
 import uuid
+from . choices import HEARD_FROM
 
 
 class LowercaseEmailField(models.EmailField):
@@ -28,7 +28,7 @@ class Register(models.Model):
     phone = models.CharField(max_length=100, blank=True, null=True, default="", unique=True)
     gender = models.BooleanField(default=False)
     technical_skill = models.BooleanField(default=False)
-    heard_by = models.CharField(max_length=100, blank=True, null=True, default="")
+    heard_by = models.CharField(max_length=100, blank=True, null=True, choices=HEARD_FROM, default="")
     location = models.CharField(max_length=100, blank=True, null=True, default="")
     date_reg = models.DateTimeField(default=timezone.now)
 

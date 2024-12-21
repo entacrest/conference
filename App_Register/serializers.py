@@ -7,12 +7,7 @@ from django.contrib.auth import authenticate
 from django.utils.translation import gettext_lazy as _
 from rest_framework import status
 from rest_framework.exceptions import *
-import random
 import string
-
-def generate_referral_code(length=8):
-    characters = string.ascii_letters + string.digits
-    return ''.join(random.choices(characters, k=length))
 
 
 class RegSerializer(serializers.ModelSerializer):
