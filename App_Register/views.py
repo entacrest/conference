@@ -1,34 +1,23 @@
 from django.http import JsonResponse
 from django.shortcuts import render
-
-from App import settings
 from . models import Register
 from django.contrib.auth.models import User, Group
-from django.contrib.auth import get_user_model
-from rest_framework import generics
+from rest_framework import viewsets
 from rest_framework import status
-from rest_framework.authtoken.serializers import AuthTokenSerializer
-from knox.auth import TokenAuthentication
-from random import randint
-from rest_framework.views import APIView
-from knox.auth import AuthToken
+from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from App_Register.serializers import RegSerializer
-
-from . utils import *
-from django.utils import timezone
-
-
-# Create your views here.
+from . utils import is_valid_email, send_activation_email, handle_exceptions
 
 
 
 
-
-class Reg(generics.GenericAPIView):
+class RegistrationView(viewsets.ViewSet):
     serializer_class = RegSerializer
 
-    def post(self, request):
+
+    @handle_exceptions
+    def register(self, request):
         email = request.data["email"]
         phone = request.data["phone"]
 

@@ -2,9 +2,12 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.core.mail import EmailMessage
 from rest_framework.response import Response
+from rest_framework import status
 from random import randint, random
+import random
 import string
 import re
+from rest_framework.views import exception_handler
 
 class util:
     staticmethod
@@ -14,6 +17,17 @@ class util:
             subject=data['email_subject'], body=data['email_body'], to=[data['to_email']])
         email.send()
 
+
+def handle_exceptions(func):
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            response = exception_handler(e, context=None)
+            if response is None:
+                return Response({"status": "failed", "message": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+            return response
+    return wrapper
 
 def send_otp(email):
     if email:
