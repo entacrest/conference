@@ -40,7 +40,7 @@ def generate_referral_code(length=8):
     return ''.join(random.choices(characters, k=length))
 
 # Example usage:
-referral_code = generate_referral_code()
+referral_code: str = generate_referral_code()
 print(referral_code)
     
 def is_valid_email(email):

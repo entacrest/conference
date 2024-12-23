@@ -18,8 +18,8 @@ class RegistrationView(viewsets.ViewSet):
 
     @handle_exceptions
     def register(self, request):
-        email = request.data["email"]
-        phone = request.data["phone"]
+        email: str = request.data["email"]
+        phone: str = request.data["phone"]
 
         if Register.objects.filter(email=email):
             return Response({"status": "failed", "message": "Email already registered"}, status=status.HTTP_409_CONFLICT)
