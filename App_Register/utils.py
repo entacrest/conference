@@ -50,7 +50,7 @@ def is_valid_email(email):
 
 
 def send_activation_email(user):
-    email_body = f"""Dear {user.first_name},\n\nThank you for registering for the 21st Century Digital Corps Conference 1.0
+    email_body = f"""Dear {user.full_name},\n\nThank you for registering for the 21st Century Digital Corps Conference 1.0
 
 
 Overview: The "21st Century Digital Corps" conference is not just a conference; it's a transformative experience tailored specifically for NYSC members. Through engaging sessions, hands-on workshops, and insightful discussions, participants will delve into the intricacies of modern technology and discover how it can be leveraged to unlock their full potential.

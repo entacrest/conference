@@ -32,3 +32,7 @@ class Register(models.Model):
     location = models.CharField(max_length=100, blank=True, null=True, default="")
     date_reg = models.DateTimeField(default=timezone.now)
 
+
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
