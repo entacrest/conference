@@ -1,8 +1,8 @@
 
 HEARD_FROM = (
-    ('facebook', 'Facebook'),
-    ('instagram', 'Instagram'),
-    ('linkedin', 'Linkedin'),
-    ('friend', 'Friend'),
-    ('others', 'Others'),
+    ('Facebook', 'Facebook'),
+    ('Instagram', 'Instagram'),
+    ('Linkedin', 'Linkedin'),
+    ('Friend', 'Friend'),
+    ('Others', 'Others'),
 )
