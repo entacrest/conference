@@ -34,5 +34,5 @@ class Register(models.Model):
 
 
     def full_name(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.first_name or ""} {self.last_name or ""}".strip()
 
