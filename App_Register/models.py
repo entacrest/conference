@@ -30,7 +30,7 @@ class Register(models.Model):
     technical_skill = models.BooleanField(default=False)
     heard_by = models.CharField(max_length=100, blank=True, null=True, choices=HEARD_FROM, default="")
     location = models.CharField(max_length=100, blank=True, null=True, default="")
-    date_reg = models.DateTimeField(default=timezone.now)
+    date = models.DateTimeField(default=timezone.now)
 
 
     def full_name(self):
