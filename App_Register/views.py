@@ -47,7 +47,7 @@ class RegistrationView(viewsets.ViewSet):
 class GeneratePDF(viewsets.ViewSet):
     def get_pdf(self, request, *args, **kwargs):
         try:
-            pdf_filename = os.path.join(settings.BASE_DIR, 'output.pdf')
+            pdf_filename = os.path.join(settings.BASE_DIR, 'participants.pdf')
 
             doc = SimpleDocTemplate(pdf_filename, pagesize=landscape(letter))
             elements = []
@@ -80,7 +80,7 @@ class GeneratePDF(viewsets.ViewSet):
             # Read the PDF file and serve as response for download
             with open(pdf_filename, 'rb') as pdf_file:
                 response = HttpResponse(pdf_file.read(), content_type='application/pdf')
-                response['Content-Disposition'] = 'attachment; filename="output.pdf"'
+                response['Content-Disposition'] = 'attachment; filename="participants.pdf"'
                 return response
 
         except Exception as e:
